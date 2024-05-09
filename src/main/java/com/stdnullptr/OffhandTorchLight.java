@@ -25,17 +25,20 @@ public class OffhandTorchLight extends JavaPlugin implements Listener {
 
 	public static final String ON = "on";
 	public static final String OFF = "off";
+	public static final int CLEANUP_DELAY = 2 * 20; // 1 second = 20 ticks
+	public static final String TORCHLIGHT_ENABLED = "torchlight-enabled";
+	public static final String TORCHLIGHT = "torchlight";
 
 	private final Set<Location> litBlocks = new HashSet<>();
 	private boolean enabled = true;
 
 	@Override
 	public void onEnable() {
-		if (!getConfig().contains("torchlight-enabled")) {
-			getConfig().set("torchlight-enabled", true);
+		if (!getConfig().contains(TORCHLIGHT_ENABLED)) {
+			getConfig().set(TORCHLIGHT_ENABLED, true);
 			saveConfig();
 		}
-		enabled = getConfig().getBoolean("torchlight-enabled", true);
+		enabled = getConfig().getBoolean(TORCHLIGHT_ENABLED, true);
 		Bukkit.getPluginManager().registerEvents(this, this);
 		getLogger().info("Offhand Torch Light is successfully enabled!");
 	}
@@ -87,12 +90,12 @@ public class OffhandTorchLight extends JavaPlugin implements Listener {
 					litBlocks.remove(blockLocationAtPlayer);
 				}
 			}
-		}.runTaskLater(this, 20); // Change back after 1 second (20 ticks)
+		}.runTaskLater(this, CLEANUP_DELAY);
 	}
 
 	@Override
 	public boolean onCommand(@NotNull CommandSender sender, Command command, @NotNull String label, String[] args) {
-		if (!command.getName().equalsIgnoreCase("torchlight") || args.length != 1) {
+		if (!command.getName().equalsIgnoreCase(TORCHLIGHT) || args.length != 1) {
 			return false;
 		}
 
@@ -104,13 +107,13 @@ public class OffhandTorchLight extends JavaPlugin implements Listener {
 		switch (args[0].toLowerCase()) {
 			case ON:
 				enabled = true;
-				getConfig().set("torchlight-enabled", true);
+				getConfig().set(TORCHLIGHT_ENABLED, true);
 				saveConfig();
 				sender.sendMessage("Offhand torch lighting has been enabled.");
 				break;
 			case OFF:
 				enabled = false;
-				getConfig().set("torchlight-enabled", false);
+				getConfig().set(TORCHLIGHT_ENABLED, false);
 				saveConfig();
 				sender.sendMessage("Offhand torch lighting has been disabled.");
 				break;
@@ -124,7 +127,7 @@ public class OffhandTorchLight extends JavaPlugin implements Listener {
 
 	@Override
 	public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, @NotNull String[] args) {
-		if (command.getName().equalsIgnoreCase("torchlight")) {
+		if (command.getName().equalsIgnoreCase(TORCHLIGHT)) {
 			List<String> suggestions = new ArrayList<>();
 			if (args.length == 1) {
 				if (ON.startsWith(args[0].toLowerCase())) {
