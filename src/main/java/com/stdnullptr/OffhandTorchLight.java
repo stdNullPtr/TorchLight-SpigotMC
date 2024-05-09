@@ -15,19 +15,29 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @SuppressWarnings("unused")
 public class OffhandTorchLight extends JavaPlugin implements Listener {
+
+	public static final String ON = "on";
+	public static final String OFF = "off";
 
 	private final Set<Location> litBlocks = new HashSet<>();
 	private boolean enabled = true;
 
 	@Override
 	public void onEnable() {
-		getLogger().info("Offhand Torch Light is successfully enabled!");
+		if (!getConfig().contains("torchlight-enabled")) {
+			getConfig().set("torchlight-enabled", true);
+			saveConfig();
+		}
+		enabled = getConfig().getBoolean("torchlight-enabled", true);
 		Bukkit.getPluginManager().registerEvents(this, this);
+		getLogger().info("Offhand Torch Light is successfully enabled!");
 	}
 
 	@Override
@@ -92,19 +102,40 @@ public class OffhandTorchLight extends JavaPlugin implements Listener {
 		}
 
 		switch (args[0].toLowerCase()) {
-			case "on":
+			case ON:
 				enabled = true;
+				getConfig().set("torchlight-enabled", true);
+				saveConfig();
 				sender.sendMessage("Offhand torch lighting has been enabled.");
 				break;
-			case "off":
+			case OFF:
 				enabled = false;
+				getConfig().set("torchlight-enabled", false);
+				saveConfig();
 				sender.sendMessage("Offhand torch lighting has been disabled.");
 				break;
 			default:
-				sender.sendMessage("Usage: /torchlight <on|off>");
+				sender.sendMessage("Usage: /torchlight <on | off>");
 				return false;
 		}
 
 		return true;
+	}
+
+	@Override
+	public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, @NotNull String[] args) {
+		if (command.getName().equalsIgnoreCase("torchlight")) {
+			List<String> suggestions = new ArrayList<>();
+			if (args.length == 1) {
+				if (ON.startsWith(args[0].toLowerCase())) {
+					suggestions.add(ON);
+				}
+				if (OFF.startsWith(args[0].toLowerCase())) {
+					suggestions.add(OFF);
+				}
+			}
+			return suggestions;
+		}
+		return null;
 	}
 }
