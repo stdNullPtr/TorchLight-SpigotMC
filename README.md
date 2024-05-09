@@ -37,7 +37,7 @@ torch in their offhand, adding an immersive experience to your journeys.
         - `/torchlight off`: Disables the offhand lighting feature.
 
 - **Permissions**:
-    - `offhandtorchlight.toggle`: Grants permission to toggle the lighting feature.
+    - `torchlight.toggle`: Grants permission to toggle the lighting feature.
 
 ## Configuration
 

@@ -46,6 +46,10 @@ public class OffhandTorchLight extends JavaPlugin implements Listener {
 
 	@EventHandler
 	public void onPlayerMove(PlayerMoveEvent event) {
+		if (!enabled) {
+			return;
+		}
+
 		Player player = event.getPlayer();
 		ItemStack offHandItem = player.getInventory().getItemInOffHand();
 
@@ -78,12 +82,29 @@ public class OffhandTorchLight extends JavaPlugin implements Listener {
 
 	@Override
 	public boolean onCommand(@NotNull CommandSender sender, Command command, @NotNull String label, String[] args) {
-		if (command.getName().equalsIgnoreCase("torchlight")) {
-			enabled = !enabled;
-			String status = enabled ? "enabled" : "disabled";
-			sender.sendMessage("Offhand torches emitting light has been " + status + ".");
-			return true;
+		if (!command.getName().equalsIgnoreCase("torchlight") || args.length != 1) {
+			return false;
 		}
-		return false;
+
+		if (!sender.hasPermission("torchlight.toggle")) {
+			sender.sendMessage("You do not have permission to use this command.");
+			return false;
+		}
+
+		switch (args[0].toLowerCase()) {
+			case "on":
+				enabled = true;
+				sender.sendMessage("Offhand torch lighting has been enabled.");
+				break;
+			case "off":
+				enabled = false;
+				sender.sendMessage("Offhand torch lighting has been disabled.");
+				break;
+			default:
+				sender.sendMessage("Usage: /torchlight <on|off>");
+				return false;
+		}
+
+		return true;
 	}
 }

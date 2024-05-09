@@ -7,3 +7,7 @@ commands:
   torchlight:
     description: Enables or disables offhand torch lighting.
     usage: /torchlight <on|off>
+permissions:
+  torchlight.toggle:
+    description: Allows toggling the offhand torch lighting feature.
+    default: op
