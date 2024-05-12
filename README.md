@@ -1,30 +1,26 @@
-# Offhand Torch Light Plugin
+ # TorchLight - Offhand Torch Light Plugin
 
-**Minecraft API:** 1.20+
+**Minecraft API:** 1.19
 
 ## Overview
 
-A Minecraft plugin designed to illuminate your offhand torch when you
-are exploring the dark expanses of the world! This plugin provides seamless dynamic lighting for players wielding a
+TorchLight is a Minecraft plugin designed to illuminate your offhand torch when you
+are exploring the dark expanses of the world! This plugin provides dynamic lighting for players wielding a
 torch in their offhand, adding an immersive experience to your journeys.
 
 ### Features
 
 - **Dynamic Offhand Lighting**: Automatically illuminates the area around the player when holding a torch in their
   offhand.
-- **Simple Commands**: Enable or disable the feature using intuitive commands.
+- **Simple Commands**: Enable or disable the plugin using intuitive commands.
 - **Efficient Cleanup**: Cleans up light sources swiftly when disabled, preventing stray lighting.
 
 ## Installation
 
-1. **Requirements**:
-    - **Java**: Make sure your server is running Java 8 or newer.
-    - **Minecraft Server**: Bukkit-compatible server software (Spigot, Paper, etc.) with version 1.16 or higher.
+**Tested on Spigot server 1.19, 1.20**
 
-2. **Installation Steps**:
-    1. Download the latest release from the [Releases](https://github.com/stdNullPtr/spigot_offhandTorch/releases) page.
-    2. Place the `OffhandTorchLight.jar` file into the `plugins` folder of your server.
-    3. Start (or restart) your server.
+1. Grab the latest version of the plugin from the Spigot page: https://www.spigotmc.org/resources/torch-light.116707/
+2. Place the extracted jar into your plugins folder
 
 ## Usage
 
@@ -41,7 +37,8 @@ torch in their offhand, adding an immersive experience to your journeys.
 
 ## Configuration
 
-Currently, the plugin does not have a dedicated configuration file. The feature is controlled entirely by commands.
+The config.yml will be created in the plugins folder, inside the Torch plugin folder, and it will hold any configs that
+need persistence
 
 ## Contribution
 
@@ -53,7 +50,10 @@ Contributions are welcome! Please follow these steps:
 4. Push to your fork: `git push origin feature/my-new-feature`.
 5. Submit a Pull Request.
 
+Or you can just open a feature request
+here: [GitHub Issues page](https://github.com/stdNullPtr/spigot_offhandTorch/issues) and I will implement it.
+
 ## Support
 
-If you encounter issues or have questions about using Offhand Torch Light, please submit an issue on
+If you encounter issues or have questions about using TorchLight, please submit an issue on
 our [GitHub Issues page](https://github.com/stdNullPtr/spigot_offhandTorch/issues).
