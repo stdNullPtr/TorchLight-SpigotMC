@@ -1,6 +1,7 @@
 package com.stdnullptr;
 
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -21,24 +22,25 @@ import java.util.List;
 import java.util.Set;
 
 @SuppressWarnings("unused")
-public class OffhandTorchLight extends JavaPlugin implements Listener {
+public class Main extends JavaPlugin implements Listener {
 
-	public static final String ON = "on";
-	public static final String OFF = "off";
-	public static final int CLEANUP_DELAY = 2 * 20; // 1 second = 20 ticks
-	public static final String TORCHLIGHT_ENABLED = "torchlight-enabled";
-	public static final String TORCHLIGHT = "torchlight";
+	public static final String ON_STR = "on";
+	public static final String OFF_STR = "off";
+	public static final int CLEANUP_DELAY = 3 * 20; // 1 second = 20 ticks
+	public static final String TORCHLIGHT_ENABLED_STR = "torchlight-enabled";
+	public static final String TORCHLIGHT_CMD_STR = "torchlight";
 
 	private final Set<Location> litBlocks = new HashSet<>();
 	private boolean enabled = true;
 
 	@Override
 	public void onEnable() {
-		if (!getConfig().contains(TORCHLIGHT_ENABLED)) {
-			getConfig().set(TORCHLIGHT_ENABLED, true);
+		if (!getConfig().contains(TORCHLIGHT_ENABLED_STR)) {
+			getConfig().set(TORCHLIGHT_ENABLED_STR, true);
 			saveConfig();
 		}
-		enabled = getConfig().getBoolean(TORCHLIGHT_ENABLED, true);
+
+		enabled = getConfig().getBoolean(TORCHLIGHT_ENABLED_STR, true);
 		Bukkit.getPluginManager().registerEvents(this, this);
 		getLogger().info("Offhand Torch Light is successfully enabled!");
 	}
@@ -46,6 +48,7 @@ public class OffhandTorchLight extends JavaPlugin implements Listener {
 	@Override
 	public void onDisable() {
 		getLogger().info("Offhand Torch Light is being disabled, cleaning up light blocks...");
+
 		// Ensure all lit blocks are reverted to air
 		for (Location location : litBlocks) {
 			Block block = location.getBlock();
@@ -53,7 +56,9 @@ public class OffhandTorchLight extends JavaPlugin implements Listener {
 				block.setType(Material.AIR);
 			}
 		}
+
 		litBlocks.clear();
+
 		getLogger().info("All light blocks have been cleaned up.");
 	}
 
@@ -64,6 +69,10 @@ public class OffhandTorchLight extends JavaPlugin implements Listener {
 		}
 
 		Player player = event.getPlayer();
+		if (player.getGameMode() == GameMode.SPECTATOR) {
+			return;
+		}
+
 		ItemStack offHandItem = player.getInventory().getItemInOffHand();
 
 		if (offHandItem.getType() != Material.TORCH) {
@@ -95,7 +104,7 @@ public class OffhandTorchLight extends JavaPlugin implements Listener {
 
 	@Override
 	public boolean onCommand(@NotNull CommandSender sender, Command command, @NotNull String label, String[] args) {
-		if (!command.getName().equalsIgnoreCase(TORCHLIGHT) || args.length != 1) {
+		if (!command.getName().equalsIgnoreCase(TORCHLIGHT_CMD_STR) || args.length != 1) {
 			return false;
 		}
 
@@ -104,16 +113,17 @@ public class OffhandTorchLight extends JavaPlugin implements Listener {
 			return false;
 		}
 
-		switch (args[0].toLowerCase()) {
-			case ON:
+		String firstArg = args[0].toLowerCase();
+		switch (firstArg) {
+			case ON_STR:
 				enabled = true;
-				getConfig().set(TORCHLIGHT_ENABLED, true);
+				getConfig().set(TORCHLIGHT_ENABLED_STR, true);
 				saveConfig();
 				sender.sendMessage("Offhand torch lighting has been enabled.");
 				break;
-			case OFF:
+			case OFF_STR:
 				enabled = false;
-				getConfig().set(TORCHLIGHT_ENABLED, false);
+				getConfig().set(TORCHLIGHT_ENABLED_STR, false);
 				saveConfig();
 				sender.sendMessage("Offhand torch lighting has been disabled.");
 				break;
@@ -127,18 +137,24 @@ public class OffhandTorchLight extends JavaPlugin implements Listener {
 
 	@Override
 	public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, @NotNull String[] args) {
-		if (command.getName().equalsIgnoreCase(TORCHLIGHT)) {
+		if (command.getName().equalsIgnoreCase(TORCHLIGHT_CMD_STR)) {
+
 			List<String> suggestions = new ArrayList<>();
+
 			if (args.length == 1) {
-				if (ON.startsWith(args[0].toLowerCase())) {
-					suggestions.add(ON);
+				String firstArg = args[0].toLowerCase();
+				if (firstArg.startsWith(ON_STR)) {
+					suggestions.add(ON_STR);
 				}
-				if (OFF.startsWith(args[0].toLowerCase())) {
-					suggestions.add(OFF);
+
+				if (firstArg.startsWith(OFF_STR)) {
+					suggestions.add(OFF_STR);
 				}
 			}
+
 			return suggestions;
 		}
+
 		return null;
 	}
 }
