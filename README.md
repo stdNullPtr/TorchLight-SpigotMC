@@ -31,7 +31,7 @@ torch in their offhand, adding an immersive experience to your journeys.
 
 - **Commands**:
     - **Enable/Disable**:
-        - `/torchlight on`: Enables the offhand lighting feature.
+        - `/torchlight on`: (default) Enables the offhand lighting feature.
         - `/torchlight off`: Disables the offhand lighting feature.
 
 - **Permissions**:
