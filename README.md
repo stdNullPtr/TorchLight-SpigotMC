@@ -1,6 +1,7 @@
  # TorchLight - Offhand Torch Light Plugin
 
 **Minecraft API:** 1.19
+**Tested on Spigot MC Server Versions:** 1.19, 1.20
 
 ## Overview
 
