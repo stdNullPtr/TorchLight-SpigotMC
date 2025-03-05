@@ -19,6 +19,7 @@ public class PluginMain extends JavaPlugin {
 	private static final String TORCHLIGHT_ENABLED_STR = "torchlight-enabled";
 	private static final String TORCHLIGHT_PERMISSION_TOGGLE_STR = "torchlight.toggle";
 	private static final String TORCHLIGHT_CMD_STR = "torchlight";
+	public static final String TORCHLIGHT_TIME_STR = "light-time";
 
 	private final List<Listener> listeners = new ArrayList<>();
 
@@ -31,6 +32,11 @@ public class PluginMain extends JavaPlugin {
 	public void onEnable() {
 		if (!getConfig().contains(TORCHLIGHT_ENABLED_STR)) {
 			getConfig().set(TORCHLIGHT_ENABLED_STR, true);
+			saveConfig();
+		}
+
+		if (!getConfig().contains(TORCHLIGHT_TIME_STR)) {
+			getConfig().set(TORCHLIGHT_TIME_STR, 3);
 			saveConfig();
 		}
 

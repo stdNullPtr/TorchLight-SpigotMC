@@ -14,12 +14,12 @@ import org.bukkit.inventory.ItemStack;
 
 public class PlayerMoveEventListener implements Listener {
 
-	private static final int CLEANUP_DELAY = 3 * 20; // 1 second = 20 ticks
-
 	private final PluginMain plugin;
+	private final int CLEANUP_DELAY;
 
 	public PlayerMoveEventListener(PluginMain plugin) {
 		this.plugin = plugin;
+		CLEANUP_DELAY = 20 * plugin.getConfig().getInt(plugin.TORCHLIGHT_TIME_STR); // 1 second = 20 ticks
 	}
 
 	@SuppressWarnings("unused")
