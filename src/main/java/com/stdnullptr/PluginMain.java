@@ -30,6 +30,8 @@ public class PluginMain extends JavaPlugin {
 
 	@Override
 	public void onEnable() {
+		saveDefaultConfig();
+
 		if (!getConfig().contains(TORCHLIGHT_ENABLED_STR)) {
 			getConfig().set(TORCHLIGHT_ENABLED_STR, true);
 			saveConfig();
