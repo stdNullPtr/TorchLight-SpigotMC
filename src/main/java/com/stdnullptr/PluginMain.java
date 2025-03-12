@@ -20,7 +20,6 @@ public class PluginMain extends JavaPlugin {
 	private static final String TORCHLIGHT_PERMISSION_TOGGLE_STR = "torchlight.toggle";
 	private static final String TORCHLIGHT_CMD_STR = "torchlight";
 	public static final String TORCHLIGHT_TIME_STR = "light-time";
-
 	private final List<Listener> listeners = new ArrayList<>();
 
 	/***
@@ -89,7 +88,8 @@ public class PluginMain extends JavaPlugin {
 	}
 
 	@Override
-	public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, @NotNull String[] args) {
+	public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias,
+			@NotNull String[] args) {
 		if (command.getName().equalsIgnoreCase(TORCHLIGHT_CMD_STR)) {
 
 			List<String> suggestions = new ArrayList<>();

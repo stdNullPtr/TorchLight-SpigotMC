@@ -19,7 +19,7 @@ public class PlayerMoveEventListener implements Listener {
 
 	public PlayerMoveEventListener(PluginMain plugin) {
 		this.plugin = plugin;
-		CLEANUP_DELAY = 20 * plugin.getConfig().getInt(plugin.TORCHLIGHT_TIME_STR); // 1 second = 20 ticks
+		CLEANUP_DELAY = 20 * plugin.getConfig().getInt(PluginMain.TORCHLIGHT_TIME_STR); // 1 second = 20 ticks
 	}
 
 	@SuppressWarnings("unused")
