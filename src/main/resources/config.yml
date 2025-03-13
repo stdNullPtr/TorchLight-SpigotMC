@@ -1,0 +1,5 @@
+# Enables the plugin
+torchlight-enabled: true
+
+# Time in seconds that the torchlight will last between movements. Default : 3.
+light-timer-seconds: 3
