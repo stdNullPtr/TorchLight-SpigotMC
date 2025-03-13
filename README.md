@@ -33,6 +33,7 @@ torch in their offhand, adding an immersive experience to your journeys.
     - **Enable/Disable**:
         - `/torchlight on`: (default) Enables the offhand lighting feature.
         - `/torchlight off`: Disables the offhand lighting feature.
+        - `/torchlight time <seconds[1;30]>`: Set the light fade-out timer.
 
 - **Permissions**:
     - `torchlight.toggle`: Grants permission to toggle the lighting feature.
