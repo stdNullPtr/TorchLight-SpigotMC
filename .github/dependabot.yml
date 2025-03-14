@@ -6,7 +6,7 @@ updates:
     schedule:
       interval: "weekly"
     open-pull-requests-limit: 10
-    target-branch: "main"
+    target-branch: "master"
     labels:
       - "dependencies"
       - "automerge"
@@ -23,7 +23,7 @@ updates:
     schedule:
       interval: "weekly"
     open-pull-requests-limit: 5
-    target-branch: "main"
+    target-branch: "master"
     labels:
       - "dependencies"
       - "automerge"

@@ -82,7 +82,7 @@ Previously, torches in either hand would work.
 
 Our release process is automated using Release Please:
 
-1. When commits are pushed to the main branch, a GitHub Action analyzes the conventional commits
+1. When commits are pushed to the master branch, a GitHub Action analyzes the conventional commits
 2. If there are releasable changes, a Release PR is created or updated
 3. When the Release PR is merged:
     - A new GitHub release is created with automatically generated release notes
