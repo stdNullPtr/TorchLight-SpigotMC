@@ -1,10 +1,19 @@
 # Contributing to TorchLight
 
-Thank you for your interest in contributing to TorchLight! This document provides guidelines to help you contribute effectively.
+Thank you for your interest in contributing to TorchLight! This document provides guidelines to help you contribute
+effectively.
+
+## Getting Started
+
+1. **Fork the repository** on GitHub
+2. **Clone your fork** locally
+3. **Set up the development environment** (see the [README.md](README.md))
+4. **Create a branch** for your changes
 
 ## Conventional Commits
 
-We use the [Conventional Commits](https://www.conventionalcommits.org/) specification for commit messages. This format makes it easier to automatically generate changelogs and determine semantic version bumps.
+We use the [Conventional Commits](https://www.conventionalcommits.org/) specification for commit messages. This format
+makes it easier to automatically generate changelogs and determine semantic version bumps.
 
 ### Commit Message Format
 
@@ -68,15 +77,30 @@ BREAKING CHANGE: The plugin now requires torches to be in the offhand slot.
 Previously, torches in either hand would work.
 ```
 
+## Development Workflow
+
+1. Create a branch with a descriptive name:
+    - `feat/feature-name` for new features
+    - `fix/issue-description` for bug fixes
+    - `docs/update-area` for documentation changes
+
+2. Make your changes, following the code style of the project
+
+3. Test your changes thoroughly
+
+4. Commit your changes using the conventional commit format
+
+5. Push your branch to your fork
+
+6. Open a pull request to the main repository
+
 ## Pull Request Process
 
-1. Create a fork of the repository
-2. Create a branch with a descriptive name (`fix/light-replacement-issue` or `feature/add-distance-command`)
-3. Make your changes, following the code style of the project
-4. Add or update tests as needed
-5. Commit your changes using the conventional commit format
-6. Push your branch to your fork
-7. Open a pull request to the main repository
+1. Ensure your PR includes only the changes relevant to your feature or fix
+2. Update the README.md if necessary (for new features, commands, etc.)
+3. Make sure all GitHub actions/checks pass
+4. A maintainer will review your PR and provide feedback
+5. Once approved, your changes will be merged
 
 ## Release Process
 
@@ -90,3 +114,10 @@ Our release process is automated using Release Please:
     - A JAR file is built and attached to the release
 
 By following the conventional commit format, you're directly contributing to this automated process!
+
+## Questions?
+
+If you have any questions or need help with the contribution process, please open an issue on GitHub or reach out to the
+maintainers.
+
+Thank you for contributing to TorchLight!

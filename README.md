@@ -1,8 +1,9 @@
- # TorchLight - Offhand Torch Light Plugin
+# TorchLight - Offhand Torch Light Plugin
 
 **Minecraft API:** 1.19  
 **Tested on Spigot MC Server Versions:** 1.19, 1.20  
-**Releases can be found on the plugin's Spigot page:** [TorchLight](https://www.spigotmc.org/resources/torch-light.116707/)
+**Releases can be found on the plugin's Spigot page:
+** [TorchLight](https://www.spigotmc.org/resources/torch-light.116707/)
 
 ## Overview
 
@@ -43,20 +44,25 @@ torch in their offhand, adding an immersive experience to your journeys.
 The config.yml will be created in the plugins folder, inside the Torch plugin folder, and it will hold any configs that
 need persistence
 
-## Contribution
+## Contributing
 
-Contributions are welcome! Please follow these steps:
+Contributions are welcome! Please read
+our [Contributing Guidelines](https://github.com/stdNullPtr/TorchLight-SpigotMC/blob/master/CONTRIBUTING.md) before
+submitting a pull request. We follow the Conventional Commits specification to maintain a clean commit history and
+automate our release process.
 
-1. Fork the repository and clone it locally.
-2. Create a new feature branch: `git checkout -b feature/my-new-feature`.
-3. Commit your changes: `git commit -m 'Add new feature'`.
-4. Push to your fork: `git push origin feature/my-new-feature`.
-5. Submit a Pull Request.
+You can contribute in several ways:
 
-Or you can just open a feature request
-here: [GitHub Issues page](https://github.com/stdNullPtr/spigot_offhandTorch/issues) and I will implement it.
+1. **Code contributions**: Fork the repository and submit a pull request
+2. **Bug reports**: Open an issue on our [GitHub Issues page](https://github.com/stdNullPtr/TorchLight-SpigotMC/issues)
+3. **Feature requests**: Suggest new features through our issues page
+4. **Documentation**: Help improve or translate documentation
 
 ## Support
 
 If you encounter issues or have questions about using TorchLight, please submit an issue on
-our [GitHub Issues page](https://github.com/stdNullPtr/spigot_offhandTorch/issues).
+our [GitHub Issues page](https://github.com/stdNullPtr/TorchLight-SpigotMC/issues).
+
+## License
+
+TorchLight is released under the [AGPL License](LICENSE).
