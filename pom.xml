@@ -18,7 +18,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
 
-        <annotations.version>24.1.0</annotations.version>
+        <annotations.version>26.0.2</annotations.version>
         <spigot-api.version>1.19-R0.1-SNAPSHOT</spigot-api.version>
 
         <maven-assembly-plugin.version>3.7.1</maven-assembly-plugin.version>
