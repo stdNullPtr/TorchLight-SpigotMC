@@ -4,16 +4,24 @@
 
     <groupId>com.stdnullptr</groupId>
     <artifactId>offhand-torch-light</artifactId>
-    <version>1.2.0</version>
+    <!-- this version will be updated dynamically and passed as argument by the workflows -->
+    <version>${revision}</version>
     <packaging>jar</packaging>
 
     <name>TorchLight</name>
 
     <properties>
+        <revision>0.0.1-SNAPHOST</revision>
+
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>17</maven.compiler.release>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+
+        <annotations.version>24.1.0</annotations.version>
+        <spigot-api.version>1.19-R0.1-SNAPSHOT</spigot-api.version>
+
+        <maven-assembly-plugin.version>3.7.1</maven-assembly-plugin.version>
     </properties>
 
     <repositories>
@@ -27,13 +35,13 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.19-R0.1-SNAPSHOT</version>
+            <version>${spigot-api.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
-            <version>24.1.0</version>
+            <version>${annotations.version}</version>
         </dependency>
     </dependencies>
 
@@ -42,7 +50,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.7.1</version>
+                <version>${maven-assembly-plugin.version}</version>
                 <configuration>
                     <descriptors>
                         <descriptor>src/main/resources/assembly/assembly.xml</descriptor>

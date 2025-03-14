@@ -1,0 +1,40 @@
+version: 2
+updates:
+  # Updates for Maven dependencies
+  - package-ecosystem: "maven"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+    target-branch: "main"
+    labels:
+      - "dependencies"
+      - "automerge"
+    commit-message:
+      prefix: "build"
+      prefix-development: "build"
+      include: "scope"
+    registries:
+      - maven-github
+
+  # Updates for GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    target-branch: "main"
+    labels:
+      - "dependencies"
+      - "automerge"
+    commit-message:
+      prefix: "ci"
+      prefix-development: "ci"
+      include: "scope"
+
+registries:
+  maven-github:
+    type: maven-repository
+    url: https://maven.pkg.github.com/*
+    username: stdNullPtr
+    password: ${{secrets.ADMIN_TOKEN}}
