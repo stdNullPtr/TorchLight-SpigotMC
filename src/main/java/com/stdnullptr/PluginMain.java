@@ -49,7 +49,6 @@ public class PluginMain extends JavaPlugin {
             registerListeners();
         }
 
-        // Initialize the command manager
         commandManager = new CommandManager(this);
 
         getLogger().info("TorchLight is successfully enabled!");
