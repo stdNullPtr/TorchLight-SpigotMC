@@ -6,7 +6,7 @@ description: The plugin makes the torch emit light when held in offhand
 commands:
   torchlight:
     description: Manages offhand torch lighting.
-    usage: /torchlight <on | off | time>
+    usage: /torchlight <on | off | time | status | light-level>
 permissions:
   torchlight.toggle:
     description: Allows toggling the offhand torch lighting feature.
