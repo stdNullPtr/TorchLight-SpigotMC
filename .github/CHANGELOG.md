@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.0](https://github.com/stdNullPtr/TorchLight-SpigotMC/compare/v1.3.0...v1.4.0) (2025-03-15)
+
+
+### Features
+
+* Add status and light-level commands. Improve performance. Limit active lights to 1 per player. Add config file validation. ([#30](https://github.com/stdNullPtr/TorchLight-SpigotMC/issues/30)) ([bc2a44b](https://github.com/stdNullPtr/TorchLight-SpigotMC/commit/bc2a44b46149a7a2f461d5e6982394ccf2030752))
+* **docker:** Add docker-compose.yml that sets up a test env for the plugin ([0ebe3b2](https://github.com/stdNullPtr/TorchLight-SpigotMC/commit/0ebe3b269699e4527a6bb0fb81d20ee8de6c5327))
+
 ## [1.3.0](https://github.com/stdNullPtr/TorchLight-SpigotMC/compare/v1.2.0...v1.3.0) (2025-03-15)
 
 
