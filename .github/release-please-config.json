@@ -18,6 +18,13 @@
         {"type": "build", "section": "Build System", "hidden": false},
         {"type": "ci", "section": "CI", "hidden": false},
         {"type": "chore", "section": "Chores", "hidden": false}
+      ],
+      "extra-files": [
+        {
+          "type": "yaml",
+          "path": "src/main/resources/plugin.yml",
+          "jsonpath": "$.version"
+        }
       ]
     }
   }

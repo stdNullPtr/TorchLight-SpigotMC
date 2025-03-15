@@ -1,7 +1,7 @@
 # TorchLight - Offhand Torch Light Plugin
 
 **Minecraft API:** 1.19  
-**Tested on Spigot MC Server Versions:** 1.19, 1.20  
+**Tested on Spigot MC Server Versions:** 1.19, 1.20, 1.21  
 **Releases can be found on the plugin's Spigot page:** [TorchLight](https://www.spigotmc.org/resources/torch-light.116707/)
 
 ## Overview
@@ -19,7 +19,7 @@ torch in their offhand, adding an immersive experience to your journeys.
 
 ## Installation
 
-**Tested on Spigot server 1.19, 1.20**
+**Tested on Spigot server 1.19, 1.20, 1.21**
 
 1. Grab the latest version of the plugin from the Spigot page: https://www.spigotmc.org/resources/torch-light.116707/
 2. Place the extracted jar into your plugins folder
