@@ -1,0 +1,19 @@
+services:
+  minecraft:
+    image: nimmis/spigot
+    container_name: minecraft_spigot
+    ports:
+      - "25565:25565"
+    environment:
+      - EULA=true
+      - SPIGOT_VER=1.21
+      - MC_MAXMEM=3g
+      - MC_MINMEM=1g
+      - SPIGOT_AUTORESTART=yes
+      # Uncomment if you need additional Java options
+      # - OTHER_JAVA_OPTS=-Djava.util.concurrent.ForkJoinPool.common.parallelism=1
+    volumes:
+      - ./minecraft_data:/minecraft
+    restart: unless-stopped
+    tty: true
+    stdin_open: true
