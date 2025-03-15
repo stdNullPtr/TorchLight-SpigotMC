@@ -1,5 +1,29 @@
 # Changelog
 
+## [1.3.0](https://github.com/stdNullPtr/TorchLight-SpigotMC/compare/v1.2.0...v1.3.0) (2025-03-15)
+
+
+### Features
+
+* **commands:** Implement command pattern ([#23](https://github.com/stdNullPtr/TorchLight-SpigotMC/issues/23)) ([9f7c0bd](https://github.com/stdNullPtr/TorchLight-SpigotMC/commit/9f7c0bd4ab3c86e54efd8712e31c474f896e11ac))
+
+
+### Documentation
+
+* **contributing:** Update contribution docs ([405c746](https://github.com/stdNullPtr/TorchLight-SpigotMC/commit/405c74644219bb006996c15d64302cf3baf91201))
+* update documentation ([8fc5098](https://github.com/stdNullPtr/TorchLight-SpigotMC/commit/8fc5098a473d1204c557109314484d7bb95371eb))
+* update README.md ([1bffb49](https://github.com/stdNullPtr/TorchLight-SpigotMC/commit/1bffb49e084736b7316d15383b51ada3532a8161))
+
+
+### Code Refactoring
+
+* **comments:** remove comment ([5f0fa24](https://github.com/stdNullPtr/TorchLight-SpigotMC/commit/5f0fa2439589fa0cf182b8720a6dcf284c1a4375))
+
+
+### CI
+
+* **release:** add dynamic versioning for plugin.yml and update README.md ([a236d15](https://github.com/stdNullPtr/TorchLight-SpigotMC/commit/a236d15bb56baee12883d76d67bb40eab1c91804))
+
 ## [1.2.0](https://github.com/stdNullPtr/TorchLight-SpigotMC/compare/v1.1.0...v1.2.0) (2025-03-14)
 
 
