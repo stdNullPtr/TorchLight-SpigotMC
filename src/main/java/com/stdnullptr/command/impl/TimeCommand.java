@@ -14,7 +14,7 @@ import java.util.List;
  * Command to set the light timer duration
  */
 public class TimeCommand implements TorchLightCommand {
-    private static final List<String> SUGGESTIONS = Arrays.asList("01", "03", "05", "10", "30");
+    private static final List<String> SUGGESTIONS = Arrays.asList("1", "3", "5", "10", "30");
     private final PluginMain plugin;
 
     public TimeCommand(final PluginMain plugin) {
