@@ -1,9 +1,7 @@
 package com.stdnullptr.command;
 
 import com.stdnullptr.PluginMain;
-import com.stdnullptr.command.impl.OffCommand;
-import com.stdnullptr.command.impl.OnCommand;
-import com.stdnullptr.command.impl.TimeCommand;
+import com.stdnullptr.command.impl.*;
 import com.stdnullptr.constants.Commands;
 import org.bukkit.command.CommandSender;
 
@@ -27,6 +25,8 @@ public class CommandManager {
         commands.put("on", new OnCommand(plugin));
         commands.put("off", new OffCommand(plugin));
         commands.put("time", new TimeCommand(plugin));
+        commands.put("status", new StatusCommand(plugin));
+        commands.put("light-level", new LightLevelCommand(plugin));
     }
 
     /**

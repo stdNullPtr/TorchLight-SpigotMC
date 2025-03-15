@@ -29,20 +29,19 @@ public class TimeCommand implements TorchLightCommand {
         }
 
         try {
-            final int seconds = Integer.parseInt(args[1]);
-            if (seconds < 1 || seconds > 30) {
-                sender.sendMessage("Time must be between 1 and 30 seconds.");
+            final int lightFadeTimeSeconds = Integer.parseInt(args[1]);
+            if (lightFadeTimeSeconds < Config.MINIMUM_LIGHT_TIME_SECONDS || lightFadeTimeSeconds > Config.MAXIMUM_LIGHT_TIME_SECONDS) {
+                sender.sendMessage("Time must be between %d and %d seconds.".formatted(Config.MINIMUM_LIGHT_TIME_SECONDS, Config.MAXIMUM_LIGHT_TIME_SECONDS));
                 return false;
             }
 
-            plugin.getConfig().set(Config.TORCHLIGHT_LIGHT_TIMER, seconds);
+            plugin.getConfig().set(Config.TORCHLIGHT_LIGHT_TIMER, lightFadeTimeSeconds);
             plugin.saveConfig();
-            plugin.updatePlayerMoveListenerTimers();
 
-            sender.sendMessage("Light time set to " + seconds + " seconds.");
+            sender.sendMessage("Light time set to %d seconds.".formatted(lightFadeTimeSeconds));
             return true;
         } catch (final NumberFormatException e) {
-            sender.sendMessage("Invalid number format. " + Commands.TORCHLIGHT_TIMER_USAGE_HINT);
+            sender.sendMessage("Invalid number format. %s".formatted(Commands.TORCHLIGHT_TIMER_USAGE_HINT));
             return false;
         }
     }

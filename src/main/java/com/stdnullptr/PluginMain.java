@@ -2,8 +2,9 @@ package com.stdnullptr;
 
 import com.stdnullptr.command.CommandManager;
 import com.stdnullptr.constants.Config;
+import com.stdnullptr.constants.Game;
 import com.stdnullptr.constants.Permissions;
-import com.stdnullptr.listener.PlayerMoveEventListener;
+import com.stdnullptr.listener.PlayerActivityEventListener;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.event.HandlerList;
@@ -18,7 +19,6 @@ import java.util.List;
 import static com.stdnullptr.constants.Commands.TORCHLIGHT;
 
 public class PluginMain extends JavaPlugin {
-
     private final List<Listener> listeners = new ArrayList<>();
     private CommandManager commandManager;
 
@@ -27,24 +27,19 @@ public class PluginMain extends JavaPlugin {
      */
     private volatile boolean isEnabled;
 
+    /**
+     * Triggered on server startup or plugin reload, NOT ON 'on' command
+     */
     @Override
     public void onEnable() {
         saveDefaultConfig();
 
-        if (!getConfig().contains(Config.TORCHLIGHT_ENABLED)) {
-            getConfig().set(Config.TORCHLIGHT_ENABLED, true);
-            saveConfig();
-        }
-
-        if (!getConfig().contains(Config.TORCHLIGHT_LIGHT_TIMER)) {
-            getConfig().set(Config.TORCHLIGHT_LIGHT_TIMER, 3);
-            saveConfig();
-        }
+        validateExistingConfig();
 
         isEnabled = getConfig().getBoolean(Config.TORCHLIGHT_ENABLED, true);
 
-        final PlayerMoveEventListener playerMoveEventListener = new PlayerMoveEventListener(this);
-        listeners.add(playerMoveEventListener);
+        listeners.add(new PlayerActivityEventListener(this));
+
         if (isEnabled) {
             registerListeners();
         }
@@ -54,10 +49,13 @@ public class PluginMain extends JavaPlugin {
         getLogger().info("TorchLight is successfully enabled!");
     }
 
+    /**
+     * Triggered on server shutdown or plugin unload, NOT ON 'off' command
+     */
     @Override
     public void onDisable() {
         unregisterListeners();
-        getLogger().info("TorchLight is disabled and all listeners have been unregistered.");
+        getLogger().info("TorchLight is disabled, all listeners have been unregistered and all lights removed.");
     }
 
     @Override
@@ -96,14 +94,6 @@ public class PluginMain extends JavaPlugin {
         togglePluginState(false);
     }
 
-    public void updatePlayerMoveListenerTimers() {
-        listeners.forEach(listener -> {
-            if (listener instanceof final PlayerMoveEventListener playerMoveEventListener) {
-                playerMoveEventListener.updateCleanupDelay();
-            }
-        });
-    }
-
     private void registerListeners() {
         getLogger().info("Registering listeners...");
 
@@ -126,10 +116,40 @@ public class PluginMain extends JavaPlugin {
         if (isEnabled) {
             registerListeners();
         } else {
+            listeners.forEach(listener -> {
+                if (listener instanceof final PlayerActivityEventListener playerActivityEventListener) {
+                    playerActivityEventListener.cleanupAllLights();
+                }
+            });
             unregisterListeners();
         }
 
         getConfig().set(Config.TORCHLIGHT_ENABLED, isEnabled);
         saveConfig();
+    }
+
+    private void validateExistingConfig() {
+        if (!getConfig().contains(Config.TORCHLIGHT_ENABLED) || !getConfig().isBoolean(Config.TORCHLIGHT_ENABLED)) {
+            getConfig().set(Config.TORCHLIGHT_ENABLED, Config.DEFAULT_PLUGIN_STATE);
+            saveConfig();
+        }
+
+        if (!getConfig().contains(Config.TORCHLIGHT_LIGHT_TIMER)
+                || !getConfig().isInt(Config.TORCHLIGHT_LIGHT_TIMER)
+                || getConfig().getInt(Config.TORCHLIGHT_LIGHT_TIMER) < Config.MINIMUM_LIGHT_TIME_SECONDS
+                || getConfig().getInt(Config.TORCHLIGHT_LIGHT_TIMER) > Config.MAXIMUM_LIGHT_TIME_SECONDS
+        ) {
+            getConfig().set(Config.TORCHLIGHT_LIGHT_TIMER, Config.DEFAULT_LIGHT_TIME_SECONDS);
+            saveConfig();
+        }
+
+        if (!getConfig().contains(Config.TORCHLIGHT_LIGHT_LEVEL)
+                || !getConfig().isInt(Config.TORCHLIGHT_LIGHT_LEVEL)
+                || getConfig().getInt(Config.TORCHLIGHT_LIGHT_LEVEL) < Game.MINIMUM_LIGHT_LEVEL
+                || getConfig().getInt(Config.TORCHLIGHT_LIGHT_LEVEL) > Game.MAXIMUM_LIGHT_LEVEL
+        ) {
+            getConfig().set(Config.TORCHLIGHT_LIGHT_LEVEL, Config.DEFAULT_LIGHT_LEVEL);
+            saveConfig();
+        }
     }
 }
