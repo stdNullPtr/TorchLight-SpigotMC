@@ -1,3 +1,5 @@
+(All credits to https://github.com/stdNullPtr/TorchLight-SpigotMC)
+
 # TorchLight - Offhand Torch Light Plugin
 
 **Minecraft API:** 1.19  
