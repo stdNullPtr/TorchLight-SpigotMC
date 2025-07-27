@@ -1,4 +1,4 @@
-# (All credits to https://github.com/stdNullPtr/TorchLight-SpigotMC)
+# (All credits to [stdNullPtr/TorchLight-SpigotMC](https://github.com/stdNullPtr/TorchLight-SpigotMC))
 
 # TorchLight - Offhand Torch Light Plugin
 
