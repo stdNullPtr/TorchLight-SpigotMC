@@ -54,6 +54,12 @@ public class PluginMain extends JavaPlugin {
      */
     @Override
     public void onDisable() {
+        // Clean up any existing lights before unregistering listeners
+        listeners.forEach(listener -> {
+            if (listener instanceof final PlayerActivityEventListener playerActivityEventListener) {
+                playerActivityEventListener.cleanupAllLights();
+            }
+        });
         unregisterListeners();
         getLogger().info("TorchLight is disabled, all listeners have been unregistered and all lights removed.");
     }

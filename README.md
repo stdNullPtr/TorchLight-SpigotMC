@@ -14,6 +14,7 @@ torch in their offhand, adding an immersive experience to your journeys.
 
 - **Dynamic Offhand Lighting**: Automatically illuminates the area around the player when holding a torch in their
   offhand.
+- **Safe Design**: Only works in AIR blocks to prevent destroying grass, snow, decorations, etc.
 - **Simple Commands**: Enable or disable the plugin using intuitive commands.
 - **Efficient Cleanup**: Cleans up light sources swiftly when disabled, preventing stray lighting.
 - **Performance Optimized**: Throttles light updates to reduce server load
@@ -50,17 +51,23 @@ need persistence
 
 ### Common Issues
 
-1. **Light blocks not appearing**:
+1. **Light doesn't work in grass fields or non-air blocks**:
+    - **This is a known limitation** - TorchLight only works in AIR blocks
+    - Placing lights in grass, snow, water, etc. would destroy those blocks
+    - See [Issue #8] for technical research on packet-based alternatives
+    - This ensures the plugin never destroys your builds or decorations
+
+2. **Light blocks not appearing**:
     - Ensure the plugin is enabled (`/torchlight status`)
     - Check that players have the correct permissions
     - Some other plugins or game mechanics might interfere with block placement
 
-2. **Performance issues**:
+3. **Performance issues**:
     - Try reducing the light timer duration (`/torchlight time 1`)
     - Set a lower light level in the configuration
     - The plugin automatically throttles light updates to minimize impact
 
-3. **Conflicts with other plugins**:
+4. **Conflicts with other plugins**:
     - TorchLight modifies AIR blocks in the world, which might conflict with area protection plugins
     - Check console for errors related to block placement permissions
 
