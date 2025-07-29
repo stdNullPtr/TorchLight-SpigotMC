@@ -1,6 +1,6 @@
 name: TorchLight
 main: com.stdnullptr.PluginMain
-version: 1.4.0
+version: 1.4.1
 api-version: 1.19
 description: The plugin makes the torch emit light when held in offhand
 commands:

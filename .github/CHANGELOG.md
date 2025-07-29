@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/stdNullPtr/TorchLight-SpigotMC/compare/v1.4.0...v1.4.1) (2025-07-29)
+
+
+### Bug Fixes
+
+* ensure lights cleanup on disable and update README with safe design details ([1e1c20f](https://github.com/stdNullPtr/TorchLight-SpigotMC/commit/1e1c20f076517f8bef787dc9b4ef69440cb813f9))
+
 ## [1.4.0](https://github.com/stdNullPtr/TorchLight-SpigotMC/compare/v1.3.0...v1.4.0) (2025-03-15)
 
 
