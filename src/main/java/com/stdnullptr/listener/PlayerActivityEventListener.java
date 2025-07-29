@@ -36,6 +36,11 @@ public class PlayerActivityEventListener implements Listener {
     public void onPlayerMove(final PlayerMoveEvent event) {
         final Player player = event.getPlayer();
         final UUID playerId = player.getUniqueId();
+        
+        // Skip if off permission
+        if(player.hasPermission("torchlight.off") == true) {
+        	return;
+        }
 
         // Skip if moved too recently
         final long currentTime = System.currentTimeMillis();
@@ -85,6 +90,10 @@ public class PlayerActivityEventListener implements Listener {
 
         // Schedule task to revert the block to its original state
         Bukkit.getScheduler().runTaskLater(plugin, () -> {
+        	// Skip if permanent permission
+        	if(player.hasPermission("torchlight.permanent")) {
+            	return;
+            }
             if (blockAtPlayerLocation.getType() == Material.LIGHT &&
                     playerLightLocations.containsKey(playerId) &&
                     playerLightLocations.get(playerId).equals(blockLocationAtPlayer)

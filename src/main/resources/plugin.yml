@@ -11,3 +11,9 @@ permissions:
   torchlight.toggle:
     description: Allows toggling the offhand torch lighting feature.
     default: op
+  torchlight.off:
+    description: Disable light for the player.
+    default: false
+  torchlight.permanent:
+    description: offhand torch never light off.
+    default: false
