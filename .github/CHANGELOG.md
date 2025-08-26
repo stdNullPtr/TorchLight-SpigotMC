@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.4.1](https://github.com/stdNullPtr/TorchLight-SpigotMC/compare/v1.4.0...v1.4.1) (2025-08-26)
+
+
+### Bug Fixes
+
+* ensure lights cleanup on disable and update README with safe design details ([1e1c20f](https://github.com/stdNullPtr/TorchLight-SpigotMC/commit/1e1c20f076517f8bef787dc9b4ef69440cb813f9))
+
+
+### CI
+
+* **deps:** bump actions/checkout from 4 to 5 ([#34](https://github.com/stdNullPtr/TorchLight-SpigotMC/issues/34)) ([917fe9a](https://github.com/stdNullPtr/TorchLight-SpigotMC/commit/917fe9ad698b561ae959689dacc3faca92e17446))
+* **deps:** bump actions/setup-java from 4 to 5 ([#35](https://github.com/stdNullPtr/TorchLight-SpigotMC/issues/35)) ([0628d0d](https://github.com/stdNullPtr/TorchLight-SpigotMC/commit/0628d0d9f26a7dac86f61cc2359ca87e5c46e3fd))
+
 ## [1.4.0](https://github.com/stdNullPtr/TorchLight-SpigotMC/compare/v1.3.0...v1.4.0) (2025-03-15)
 
 
