@@ -21,7 +21,7 @@
         <annotations.version>26.0.2</annotations.version>
         <spigot-api.version>1.19-R0.1-SNAPSHOT</spigot-api.version>
 
-        <maven-assembly-plugin.version>3.7.1</maven-assembly-plugin.version>
+        <maven-assembly-plugin.version>3.8.0</maven-assembly-plugin.version>
     </properties>
 
     <repositories>
